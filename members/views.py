@@ -1,7 +1,9 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 from django.template import loader
 from .models import Member
+from django.http import HttpResponse, HttpResponseRedirect
 
+api_key =('Z8O8EWVEWLEFPD4X')
 
 def members(request):
     mymembers = Member.objects.all().values()
@@ -27,8 +29,18 @@ def main(request):
 
 
 def testing(request):
+    mydata = Member.objects.values_list('firstname')
     template = loader.get_template('template.html')
     context = {
-        'fruits': ['Apple', 'Banana', 'Cherry'],
+        'mymembers': mydata,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def testtest(request):
+    mymembers = Member.objects.all().values()
+    template = loader.get_template('testtest.html')
+    context = {
+        'mymembers': mymembers,
     }
     return HttpResponse(template.render(context, request))
