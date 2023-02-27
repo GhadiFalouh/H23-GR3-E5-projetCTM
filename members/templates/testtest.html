@@ -1,13 +1,32 @@
+<!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
+  <title>Prix de l'action</title>
+</head>
 <body>
+  <h1>Recherche d'action</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label for="nomAction">Nom de l'action:</label>
+    <input type="text" id="nomAction" name="nomAction">
+    <button type="submit">Rechercher</button>
+  </form>
 
-<h1>Members</h1>
+  {% if nomAction %}
+    <h2>Prix de l'action {{ nomAction }} :</h2>
+  {% endif %}
 
-<ul>
-  {% for x in mymembers %}
-    <li>{{ x.firstname }} {{ x.lastname }}</li>
-  {% endfor %}
-</ul>
-
+  {% if my_list %}
+    <table>
+      {% for row in my_list %}
+        <tr>
+          {% for cell in row %}
+            <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
 </body>
 </html>
