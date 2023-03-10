@@ -8,8 +8,9 @@
 <body>
 
 <div class="topnav">
-  <a href="/">HOME</a> |
-  <a href="/members">MEMBERS</a>
+  <a href="/">Page principal</a> |
+  <a href="/members">Membres</a> |
+    <a href="{% url 'logout' %}">Déconnexion</a>
 </div>
 
 {% block content %}

@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+{% block content %}
+<div class="accueil">
+  <h1>ACCUEIL</h1>
+  {% if user.is_authenticated %}
+    <p>Bienvenue, {{ user.username }}!</p>
+  {% else %}
+    <h2>Connectez-vous</h2>
+    <a href="{% url 'login' %}">Se connecter</a>
+  {% endif %}
+</div>
+{% endblock %}

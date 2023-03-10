@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Member
+from .models import *
 
 
 # Register your models here.
@@ -9,3 +9,4 @@ class MemberAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Member, MemberAdmin)
+admin.site.register(Action)
