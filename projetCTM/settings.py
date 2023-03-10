@@ -17,7 +17,6 @@ from aiohttp.web_middlewares import middleware
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -28,7 +27,6 @@ SECRET_KEY = "django-insecure-h13jq*0uli&b^ga*ra4)adp8n(_89ijr94o#+pxkm0(w4v(4l3
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -73,17 +71,30 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "projetCTM.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+''''
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+'''
 
+import mongoengine
+
+# mongoengine.connect(db='BDEB', host='199.202.76.91/32', username='PrjCMT', password='hCPOiPV5dvLXYR46')
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'CLIENT': {
+            'host': 'mongodb+srv://PrjCMT:hCPOiPV5dvLXYR46@projetcmt.hylvizi.mongodb.net/?retryWrites=true&w=majority',
+            'name': "BDEB_DB",
+            "authMechanism": "SCRAM-SHA-1"
+        }
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -103,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -114,7 +124,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
