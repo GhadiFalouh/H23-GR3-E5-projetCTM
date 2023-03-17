@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .decorators import unauthenticated_user
+from .hierarchie import unauthenticated_user
 from .models import Member
 from django.http import HttpResponse
 from .forms import CreateUserForm
@@ -53,9 +53,6 @@ def testing(request):
 
 @unauthenticated_user
 def registerPage(request):
-    # if request.user.is_authenticated:  # ces deux lignes interdit l acces a la page de registration si on est deja connecte
-    # return redirect('main')
-    # else:
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
