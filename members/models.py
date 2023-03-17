@@ -13,5 +13,4 @@ class Member(models.Model):
 
 class Action(models.Model):
     name = models.CharField(max_length=255)
-    price = models.FloatField(null= True)
-
+    price = models.FloatField(null=True)
