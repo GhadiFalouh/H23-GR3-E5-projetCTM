@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Choisir une action</title>
+  </head>
+  <body>
+    <h1>Bonjour {{ firstname }} !</h1>
+    <p>Choisissez une action :</p>
+    <form method="POST" action="{% url 'moncompte' member_id %}">
+      {% csrf_token %}
+      <label for="action">Action :</label>
+      <select name="action" id="action">
+        <option value="AAPL">Apple Inc. (AAPL)</option>
+        <option value="MSFT">Microsoft Corporation (MSFT)</option>
+        <option value="GOOGL">Alphabet Inc. (GOOGL)</option>
+        <option value="AMZN">Amazon.com, Inc. (AMZN)</option>
+        <option value="Meta">Meta (Meta)</option>
+        <option value="TSLA">Tesla, Inc. (TSLA)</option>
+        <option value="V">Visa Inc. (V)</option>
+        <option value="DIS">Walt Disney Co. (DIS)</option>
+        <option value="KO">Coca-Cola Co. (KO)</option>
+        <option value="WMT">Walmart Inc. (WMT)</option>
+        <option value="MCD">McDonald's Corp. (MCD)</option>
+        <option value="BA">The Boeing Co. (BA)</option>
+        <option value="IBM">IBM Corporation (IBM)</option>
+      </select>
+      <br><br>
+      <input type="submit" value="Choisir">
+    </form>
+  </body>
+</html>
