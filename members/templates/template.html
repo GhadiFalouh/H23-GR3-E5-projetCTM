@@ -1,12 +1,16 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<link rel="stylesheet" href="{% static 'myglobal.css' %}">
-<body>
+{% extends "master.html" %}
 
-{% for x in fruits %}
-  <h1>{{ x }}</h1>
-{% endfor %}
+{% block content %}
+    <div class="test">
+    <h1>CTM</h1>
+        {% for x in mymember %}
+            <p>{{ x }}</p>
+        {% endfor %}
+    <p>Bonjour, <a href="/members">{{ mymember.firstname }}</a></p>
+    </div>
 
-</body>
-</html>
+{% endblock %}
+
+
+
+
