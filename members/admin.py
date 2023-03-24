@@ -10,3 +10,4 @@ class MemberAdmin(admin.ModelAdmin):
 
 admin.site.register(Member, MemberAdmin)
 admin.site.register(Action)
+admin.site.register(PorteFeuille)
