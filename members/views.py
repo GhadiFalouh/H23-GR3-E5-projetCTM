@@ -3,9 +3,7 @@ import requests
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.template import loader
-
-from .decorators import unauthenticated_user
-from .models import Member
+from .models import Member, Action
 from django.http import HttpResponse
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
@@ -16,7 +14,7 @@ def accueil(request):
     return render(request, 'accueil.html')
 
 
-@login_required(login_url='login')  # pour interdire l acees si tu n es pas connecte
+@login_required(login_url='login')  # pour interdire l acees sans si tu nes pas connecte
 def members(request):
     mymembers = Member.objects.all().values()
     template = loader.get_template('all_members.html')
@@ -43,33 +41,36 @@ def main(request):
 
 
 def testing(request):
-    mydata = Member.objects.values_list('firstname')
+    mymember = Member.objects.values_list('firstname')
+    # mymember = Member.objects.get(id=id)
     template = loader.get_template('template.html')
     context = {
-        'mymembers': mydata,
+        'mymember': mymember,
     }
     return HttpResponse(template.render(context, request))
 
 
-@unauthenticated_user
 def registerPage(request):
-    # if request.user.is_authenticated:  # ces deux lignes interdit l acces a la page de registration si on est deja connecte
-    # return redirect('main')
-    # else:
-    form = CreateUserForm()
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Votre compte est crée ' + user)  # source : django documentation
-            return redirect('login')
+    if request.user.is_authenticated:  # ces deux lignes interdit l acces a la page de registration si on est deja connecte
+        return redirect('main')
+    else:
+        form = CreateUserForm()
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                firstname = form.cleaned_data.get('firstname')
+                lastnema = form.cleaned_data.get('lastname')
 
-    context = {'form': form}
-    return render(request, 'accounts/register.html', context)
+                messages.success(request,
+                                 'Votre compte est crée ' + user)  # source : django documentation
+                return redirect('login')
+
+        context = {'form': form}
+        return render(request, 'accounts/register.html', context)
 
 
-@unauthenticated_user
 def loginPage(request):
     if request.user.is_authenticated:  # ces deux lignes interdit l acces a la page de login si on est deja connecte
         return redirect('main')
