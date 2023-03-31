@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html>
   <head>
     <meta charset="UTF-8">
     <title>Choisir une action</title>
   </head>
   <body>
-    <h1>Bonjour {{ firstname }} !</h1>
     <p>Choisissez une action :</p>
-    <form method="POST" action="{% url 'moncompte' member_id %}">
+    <form method="POST">
       {% csrf_token %}
       <label for="action">Action :</label>
       <select name="action" id="action">
@@ -26,8 +23,8 @@
         <option value="IBM">IBM Corporation (IBM)</option>
       </select>
       <br><br>
-      <input type="submit" name="type" value="Acheter">
-        <input type="submit" name="type" value="Vendre">
+      <input type="submit" name="type" value="Chercher">
+
     </form>
   </body>
 </html>
