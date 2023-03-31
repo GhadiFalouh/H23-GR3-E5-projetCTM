@@ -38,6 +38,33 @@ def details(request, id):
     return render(request, 'details.html', context)
 
 
+''''
+def graphique(request, action):
+    listeDonnees = getPrix(action,0,True)
+    context = {'listeDonnees': listeDonnees, 'action': action}
+    return render(request, 'graph.html',context)
+'''
+
+
+def recherche(request):
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        listeDonnees = getPrix(action, 0, True)
+        liste_prix = []
+        liste_date = []
+        for i in range(len(listeDonnees[0][0][0])):
+            liste_prix.append(listeDonnees[0][i][1])
+            liste_date.append(listeDonnees[0][i][0])
+        for i in range(len(liste_prix) // 2):
+            liste_prix[i], liste_prix[-1 - i] = liste_prix[-1 - i], liste_prix[i]
+            liste_date[i], liste_date[-1 - i] = liste_date[-1 - i], liste_date[i]
+
+        context = {'action': action, 'liste_prix': liste_prix, 'liste_date': liste_date}
+        return render(request, 'graph.html', context)
+    else:
+        return render(request, 'recherche.html')
+
+
 # Seul le membre associé a cette portefeuille a le droit d'accéder à cela
 @login_required(login_url='login')
 def moncompte(request, id):
@@ -45,31 +72,53 @@ def moncompte(request, id):
     if request.method == 'POST':
         action = request.POST.get('action')
         mymember = Member.objects.get(id=id)
-        print('mymember ', mymember)
         portefeuille = mymember.portefeuille
-        if portefeuille is None:
-            # create a new PorteFeuille object for the member
-            portefeuille = PorteFeuille.objects.create()
-            portefeuille.id =random.randint(10000000, 99999999)
-            mymember.portefeuille = portefeuille
-            portefeuille.save()
-            mymember.save()
         actions_dict = portefeuille.actions
-        #print("ac ", actions_dict)
-        if len(actions_dict) == 0:
-            actions_dict = {'AAPL': 0, 'MSFT': 0, 'GOOGL': 0, 'AMZN': 0, 'Meta': 0, 'TSLA': 0, 'V': 0, 'DIS': 0,
-                        'KO': 0, 'WMT': 0, 'MCD': 0, 'BA': 0, 'IBM': 0}
-            mymember.portefeuille.actions = actions_dict
-        actions_dict[action] += 1
+
+        typeOperation = request.POST.get('type')
+
+        if typeOperation == 'Acheter':
+            montantDepense, etat = getPrix(action, portefeuille.montant, False)
+            if etat:
+                portefeuille.montant -= montantDepense
+                actions_dict[action] += 1
+        else:
+            montantRecuperer, etat = getPrix(action, portefeuille.montant, False)
+            portefeuille.montant += montantRecuperer
+            actions_dict[action] -= 1
         portefeuille.save()
         mymember.portefeuille = portefeuille
         mymember.save()
-        print("dict",mymember.portefeuille.actions)
-        # portefeuille['a'] = 1
-        return HttpResponse(f"Action choisie : {action}")
+        context = {'firstname': firstname, 'member_id': id}
+        return render(request, 'moncompte.html', context)
     else:
         context = {'firstname': firstname, 'member_id': id}
         return render(request, 'moncompte.html', context)
+
+
+def getPrix(nomAction, max,
+            graph):  # si graphe on return tous les donnees, si nin on return le prix seulement(pour acheter ou vendre)
+    api_key = 'Z8O8EWVEWLEFPD4X'
+    CSV_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=" + nomAction + "&interval=60min&slice=year1month1&apikey=" + api_key
+    with requests.Session() as s:
+        download = s.get(CSV_URL)
+        decoded_content = download.content.decode('utf-8')
+        cr = csv.reader(decoded_content.splitlines(), delimiter=',')
+        my_list = list(cr)
+        if graph:
+            listePrix = []
+            for element in range(1, len(my_list)):
+                temp_liste = []
+                temp_liste.append(my_list[element][0])
+                temp_liste.append(float(my_list[element][1]))
+                listePrix.append(temp_liste)
+            return listePrix, True
+        else:
+            prix = float(my_list[1][1])
+            if max >= prix:
+                return prix, True
+            else:
+                return prix, False
 
 
 @login_required(login_url='login')  # on met cela avant chaque methode acessible avec un login
@@ -86,10 +135,10 @@ def testing(request):
     mymember = Member.objects.values_list('firstname')
     if request.user.is_authenticated:
         a = request.user.email
-        print(a)
-        print(mymember[0])
-        if ('Ghadi',) in mymember:
-            print(True)
+    #        print(a)
+    #        print(mymember[0])
+    #       if ('Ghadi',) in mymember:
+    #           print(True)
     template = loader.get_template('template.html')
     context = {
         'mymember': mymember,
@@ -122,8 +171,13 @@ def creationPortefeuille(form):
     first_name = form.cleaned_data.get('first_name')
     last_name = form.cleaned_data.get('last_name')
     username = form.cleaned_data.get('username')
-
-    member = Member(firstname=first_name, lastname=last_name, username=username)
+    portefeuille = PorteFeuille.objects.create()
+    portefeuille.id = random.randint(10000000, 99999999)
+    actions_dict = {'AAPL': 0, 'MSFT': 0, 'GOOGL': 0, 'AMZN': 0, 'Meta': 0, 'TSLA': 0, 'V': 0, 'DIS': 0,
+                    'KO': 0, 'WMT': 0, 'MCD': 0, 'BA': 0, 'IBM': 0}
+    portefeuille.actions = actions_dict
+    member = Member(firstname=first_name, lastname=last_name, username=username, portefeuille=portefeuille)
+    portefeuille.save()
     member.save()
 
 
