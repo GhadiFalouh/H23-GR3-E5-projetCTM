@@ -62,3 +62,5 @@
 ## Diagramme de Gantt : Excel, gantt Project 
 ## Analyse : 
 ## UML : diagramme de classes 
+![image](https://user-images.githubusercontent.com/123177411/229124117-567ff7c8-b53c-493e-ad3d-409e50dafdea.png)
+
