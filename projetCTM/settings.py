@@ -73,14 +73,14 @@ WSGI_APPLICATION = "projetCTM.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'masteruser',
-        'PASSWORD': 'masteruser',
-        'HOST': 'database-dgango.c43nyaqel3oh.us-east-2.rds.amazonaws.com',
+        'PASSWORD': 'password',
+        'HOST': 'projetctm.c43nyaqel3oh.us-east-2.rds.amazonaws.com',
         'PORT': '5432'
     }
 }
@@ -92,6 +92,8 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+'''
 
 
 '''
@@ -148,7 +150,7 @@ STATIC_ROOT = BASE_DIR / 'productionfiles'
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'mystaticfiles'
+    BASE_DIR / 'static'
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

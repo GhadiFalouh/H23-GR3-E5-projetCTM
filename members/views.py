@@ -18,6 +18,7 @@ def accueil(request):
 @login_required(login_url='login')  # pour interdire l acees sans si tu nes pas connecte
 def members(request):
     mymembers = Member.objects.all().values()
+    print(mymembers)
     template = loader.get_template('all_members.html')
     context = {
         'mymembers': mymembers,
@@ -28,8 +29,6 @@ def members(request):
 @login_required(login_url='login')
 def details(request, id):
     mymember = Member.objects.get(id=id)
-
-    # print(mymember.firstname) sa marche
     if request.user.is_authenticated and request.user.username == mymember.username:  # on verifie si l utilsateur va dans son profil
         return redirect('moncompte', id=mymember.id)
     context = {
@@ -123,8 +122,18 @@ def getPrix(nomAction, max,
 
 @login_required(login_url='login')  # on met cela avant chaque methode acessible avec un login
 def main(request):
-    template = loader.get_template('main.html')
-    return HttpResponse(template.render())
+    mymember = None
+    mymembers = Member.objects.all().values()
+    for member in mymembers:
+        if member['username'] == request.user.username:
+            mymember = Member.objects.get(id=member['id'])
+            #Member.objects.get(id=id)
+    context = {
+        'mymember': mymember,
+        'id': mymember.id,
+    }
+    template = loader.get_template('accueil_v2.html')
+    return HttpResponse(template.render(context, request))
 
 
 def testing(request):
@@ -196,7 +205,7 @@ def loginPage(request):
             else:
                 messages.info(request, 'Erreur dans le nom ou dans le mot de passe')
         context = {}
-        return render(request, 'accounts/login.html', context)
+        return render(request, 'accounts/connexion.html', context) # accounts/login.html
 
 
 def logoutUser(request):
