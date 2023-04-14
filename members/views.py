@@ -72,7 +72,7 @@ def moncompte(request, id):
     mymember = Member.objects.get(id=id)
     portefeuille = mymember.portefeuille
     actions_dict = portefeuille.actions
-    valeur = getValeur(actions_dict)
+    valeur = getValeur(actions_dict) + portefeuille.montant
     if request.method == 'POST':
         action = request.POST.get('action')
 
@@ -90,21 +90,23 @@ def moncompte(request, id):
         portefeuille.save()
         mymember.portefeuille = portefeuille
         mymember.save()
-        context = {'firstname': firstname, 'member_id': id, 'membre': mymember, 'email': email, 'valeur':valeur}
+        context = {'firstname': firstname, 'member_id': id, 'membre': mymember, 'email': email, 'valeur': valeur}
         return render(request, 'MonCompteV2.html', context)
     else:
-        #mymember = Member.objects.get(id=id)
-        context = {'firstname': firstname, 'member_id': id, 'membre': mymember, 'email': email,'valeur':valeur}
+        # mymember = Member.objects.get(id=id)
+        context = {'firstname': firstname, 'member_id': id, 'membre': mymember, 'email': email, 'valeur': valeur}
         return render(request, 'MonCompteV2.html', context)
 
 
 def getValeur(dict_actions: PorteFeuille.actions) -> int:
     valeur = 0
     for cle, val in dict_actions.items():
-        prix,ignore = getPrix(cle, 10000, False)
-        temp = int(val) * int(prix)   # le 10000 pour etre sure que le montant n est pas trop petit
-        valeur += temp
+        if val > 0:
+            prix, ignore = getPrix(cle, 10000, False)
+            temp = int(val) * int(prix)  # le 10000 pour etre sure que le montant n est pas trop petit
+            valeur += temp
     return valeur
+
 
 def getPrix(nomAction, max,
             graph):  # si graphe on return tous les donnees, si nin on return le prix seulement(pour acheter ou vendre)
