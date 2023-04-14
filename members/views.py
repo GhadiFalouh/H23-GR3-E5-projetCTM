@@ -68,11 +68,13 @@ def recherche(request):
 @login_required(login_url='login')
 def moncompte(request, id):
     firstname = request.user.first_name
+    email = request.user.email
+    mymember = Member.objects.get(id=id)
+    portefeuille = mymember.portefeuille
+    actions_dict = portefeuille.actions
+    valeur = getValeur(actions_dict)
     if request.method == 'POST':
         action = request.POST.get('action')
-        mymember = Member.objects.get(id=id)
-        portefeuille = mymember.portefeuille
-        actions_dict = portefeuille.actions
 
         typeOperation = request.POST.get('type')
 
@@ -88,12 +90,21 @@ def moncompte(request, id):
         portefeuille.save()
         mymember.portefeuille = portefeuille
         mymember.save()
-        context = {'firstname': firstname, 'member_id': id}
-        return render(request, 'moncompte.html', context)
+        context = {'firstname': firstname, 'member_id': id, 'membre': mymember, 'email': email, 'valeur':valeur}
+        return render(request, 'MonCompteV2.html', context)
     else:
-        context = {'firstname': firstname, 'member_id': id}
-        return render(request, 'moncompte.html', context)
+        #mymember = Member.objects.get(id=id)
+        context = {'firstname': firstname, 'member_id': id, 'membre': mymember, 'email': email,'valeur':valeur}
+        return render(request, 'MonCompteV2.html', context)
 
+
+def getValeur(dict_actions: PorteFeuille.actions) -> int:
+    valeur = 0
+    for cle, val in dict_actions.items():
+        prix,ignore = getPrix(cle, 10000, False)
+        temp = int(val) * int(prix)   # le 10000 pour etre sure que le montant n est pas trop petit
+        valeur += temp
+    return valeur
 
 def getPrix(nomAction, max,
             graph):  # si graphe on return tous les donnees, si nin on return le prix seulement(pour acheter ou vendre)
@@ -127,7 +138,7 @@ def main(request):
     for member in mymembers:
         if member['username'] == request.user.username:
             mymember = Member.objects.get(id=member['id'])
-            #Member.objects.get(id=id)
+            # Member.objects.get(id=id)
     context = {
         'mymember': mymember,
         'id': mymember.id,
@@ -205,7 +216,7 @@ def loginPage(request):
             else:
                 messages.info(request, 'Erreur dans le nom ou dans le mot de passe')
         context = {}
-        return render(request, 'accounts/connexion.html', context) # accounts/login.html
+        return render(request, 'accounts/connexion.html', context)  # accounts/login.html
 
 
 def logoutUser(request):
