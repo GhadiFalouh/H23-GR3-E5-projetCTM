@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Login</title>
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+ 		<!-- Erreure causé par les deux links suivants -->
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+		
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
 		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
 		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-		integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-		crossorigin="anonymous"></script>
-		<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-
 	<style>
+	
 			  .button:active {
 				background: #006e58;
 			}
@@ -73,11 +72,11 @@
 				white-space: nowrap;
 				-webkit-overflow-scrolling: touch;
 			}
-			.nav-item
+			.nav-item 
 			{
 				margin: 2px;
 			}
-
+			
 		body,
 		html {
 			margin: 0;
@@ -141,10 +140,55 @@
 			padding: 10px;
 			margin-top: 10px;
 		}
+		#devise{
+				border-radius: 5px;
+			}
 	</style>
-
 </head>
+<header>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<div class="container-fluid">
+		  <a class="navbar-brand">CMT</a>
+		  <a class="navbar-brand" href="Accueil.html">Accueil</a>
+		  <a class="navbar-brand" href="panier.html">Panier</a>
+		  <a class="navbar-brand" href="connexion.html">Connexion</a>
+		   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="mynavbar">
+			<ul class="navbar-nav me-auto">
+			  </li>
+			  <li class="nav-item">
+			  </li>
+			</ul>
+			<form class="d-flex">
 
+				<label for="devise" class="form-label"></label>
+				<select class=".form-select" id="devise" required>
+				  <option value="">Choisir devise</option>
+				  <option> Apple Inc. (AAPL)</option>
+				  <option> Microsoft Corporation (MSFT)</option>
+				  <option> Alphabet Inc. (GOOGL)</option>
+				  <option> Meta (Meta)</option>
+				  <option> Tesla, Inc. (TSLA)</option>
+				  <option> Visa Inc. (V)</option>
+				  <option> Walt Disney Co. (DIS)</option>
+				  <option> Coca-Cola Co. (KO)</option>
+				  <option> Walmart Inc. (WMT)</option>
+				  <option> McDonald's Corp. (MCD)</option>
+				  <option> The Boeing Co. (BA)</option>
+				  <option> IBM Corporation (IBM)</option>
+				</select>
+				<div class="invalid-feedback">
+				  Veuillez sélectionner une devise valide.
+				</div>	
+			  <button class="btn btn-primary" type="button">Rechercher</button>
+			  
+			</form>
+		  </div>
+		</div>
+	  </nav>
+	</header>
 
 <body>
 	<div class="container h-100">
@@ -153,7 +197,7 @@
 				<div class="d-flex justify-content-center">
 
 
-					<h3 id="form-title">LOGIN</h3>
+					<h3 id="form-title">CONNEXION</h3>
 				</div>
 				<div class="d-flex justify-content-center form_container">
 					<form method="POST" action="">
@@ -162,30 +206,28 @@
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="username" placeholder="Username..." class="form-control">
+							<input type="text" name="username" placeholder="Nom d'utilisateurs..." class="form-control">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-								<input type="password" name="password" placeholder="Password..." class="form-control" >
+								<input type="password" name="password" placeholder="Mots de passe..." class="form-control" >
 						</div>
 
 							<div class="d-flex justify-content-center mt-3 login_container">
-				 				<input class="btn login_btn" type="submit" value="Login">
+								<a class="btn login_btn" href="Accueil.html">Connexion</a></p>
 				   			</div>
 					</form>
-
 				</div>
                 {% for message in messages %}
                     <p id = "messages"> {{ message }}</p>
                 {% endfor %}
 
-				<div class="mt-4">
+				<div class="mt-2">
 					<div class="d-flex justify-content-center links">
-						Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
+						Vous n'avez pas de compte? <a href="Inscription.html" class="ml-2">Inscrivez-vous</a>
 					</div>
-
 				</div>
 			</div>
 		</div>
