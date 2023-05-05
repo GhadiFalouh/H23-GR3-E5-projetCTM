@@ -37,6 +37,33 @@ def details(request, id):
     }
     return render(request, 'details.html', context)
 
+@login_required(login_url='login')
+def devise(request):
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        print('action', action)
+        listeDonnees = getPrix(action, 0, True)
+        liste_prix = []
+        liste_date = []
+        for i in range(len(listeDonnees[0][0][0])):
+            liste_prix.append(listeDonnees[0][i][1])
+            liste_date.append(listeDonnees[0][i][0])
+        for i in range(len(liste_prix) // 2):
+            liste_prix[i], liste_prix[-1 - i] = liste_prix[-1 - i], liste_prix[i]
+            liste_date[i], liste_date[-1 - i] = liste_date[-1 - i], liste_date[i]
+
+        context = {'action': action, 'liste_prix': liste_prix, 'liste_date': liste_date}
+        return render(request, 'devise.html', context)
+    else:
+        return render(request, 'devise.html')
+
+
+
+
+
+
+    #return render(request, 'devise.html')
+
 
 ''''
 def graphique(request, action):
@@ -60,7 +87,7 @@ def recherche(request):
             liste_date[i], liste_date[-1 - i] = liste_date[-1 - i], liste_date[i]
 
         context = {'action': action, 'liste_prix': liste_prix, 'liste_date': liste_date}
-        return render(request, 'graph.html', context)
+        return render(request, 'devise.html', context)
     else:
         return render(request, 'recherche.html')
 

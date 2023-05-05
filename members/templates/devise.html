@@ -61,7 +61,7 @@
 
 </style>
     <!-- Custom styles for this template -->
-  <link href="form-validation.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   </head>
   <body class="bg-light">
     
@@ -69,9 +69,9 @@
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<div class="container-fluid">
 			  <a class="navbar-brand">CMT</a>
-			  <a class="navbar-brand" href="Accueil.html">Accueil</a>
-			  <a class="navbar-brand" href="panier.html">Panier</a>
-			  <a class="navbar-brand" href="connexion.html">Connexion</a>
+                <a class="navbar-brand" href={% url 'main' %}>Accueil</a>
+			  <a class="navbar-brand" href={% url 'panier' %}>Panier</a>
+			  <a class="navbar-brand" href={% url 'logout' %}>Déconnexion</a>
  			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
 				<span class="navbar-toggler-icon"></span>
 			  </button>
@@ -81,28 +81,7 @@
 				  <li class="nav-item">
 				  </li>
 				</ul>
-		<form class="d-flex">
-            <label for="devise" class="form-label"></label>
-            <select class=".form-select" id="devise" required>
-              <option value="">Choisir devise</option>
-              <option> Apple Inc. (AAPL)</option>
-              <option> Microsoft Corporation (MSFT)</option>
-              <option> Alphabet Inc. (GOOGL)</option>
-              <option> Meta (Meta)</option>
-              <option> Tesla, Inc. (TSLA)</option>
-              <option> Visa Inc. (V)</option>
-              <option> Walt Disney Co. (DIS)</option>
-              <option> Coca-Cola Co. (KO)</option>
-              <option> Walmart Inc. (WMT)</option>
-              <option> McDonald's Corp. (MCD)</option>
-              <option> The Boeing Co. (BA)</option>
-              <option> IBM Corporation (IBM)</option>
-            </select>
-            <div class="invalid-feedback">
-              Veuillez sélectionner une devise valide.
-            </div>	
-				  <button class="btn btn-primary" type="button">Rechercher</button>
-		</form>
+
 			  </div>
 			</div>
 		</nav>
@@ -119,64 +98,82 @@
         </div>
 
        <!-- Espace pour le graph -->
-      <canvas class="my-4 w-100" id="myChart" width="900" height="200"></canvas>
+
+    <p>Choisissez une action :</p>
+
+
+    <form method="POST">
+      {% csrf_token %}
+      <label for="action">Action :</label>
+      <select name="action" id="action">
+        <option value="AAPL">Apple Inc. (AAPL)</option>
+        <option value="MSFT">Microsoft Corporation (MSFT)</option>
+        <option value="GOOGL">Alphabet Inc. (GOOGL)</option>
+        <option value="AMZN">Amazon.com, Inc. (AMZN)</option>
+        <option value="Meta">Meta (Meta)</option>
+        <option value="TSLA">Tesla, Inc. (TSLA)</option>
+        <option value="V">Visa Inc. (V)</option>
+        <option value="DIS">Walt Disney Co. (DIS)</option>
+        <option value="KO">Coca-Cola Co. (KO)</option>
+        <option value="WMT">Walmart Inc. (WMT)</option>
+        <option value="MCD">McDonald's Corp. (MCD)</option>
+        <option value="BA">The Boeing Co. (BA)</option>
+        <option value="IBM">IBM Corporation (IBM)</option>
+      </select>
+      <br><br>
+      <input type="submit" name="type" value="Chercher">
+
+    </form>
+
+<!-- the content goes here -->
+  <div id="chart"></div>
+  <div id="chart2"></div>
+
+  <script>
+    var options = {
+      series: [{
+        name: "Desktops",
+        data: {{ liste_prix|safe }}
+      }],
+      chart: {
+        height: 350,
+        type: 'line',
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'straight'
+      },
+      title: {
+        text: 'Product Trends by Month',
+        align: 'left'
+      },
+      grid: {
+        row: {
+          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+          opacity: 0.5
+        },
+      },
+      xaxis: {
+        categories: {{ liste_date|safe  }},
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+  </script>
+
+
+
+
+
+
         <!-- Informations liées au graph -->
-      <h2>Informations</h2>
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th scope="col">Nom devise</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-            <tr>
-              <td>Info1</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>Info2</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>Info3</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>Info4</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>Info5</td>
-              <td>text</td>
-              <td>random</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>Info6</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-        </table>
-      </div>
+
     </main>
     <footer class="my-1 text-muted text-center text-small">
         <p class="mb-1">&copy; 2023-2024 Canada Market Trade </p>
