@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+# py manage.py runserver
 
 
 def accueil(request):
@@ -18,7 +19,7 @@ def accueil(request):
 @login_required(login_url='login')  # pour interdire l acees sans si tu nes pas connecte
 def members(request):
     mymembers = Member.objects.all().values()
-    print(mymembers)
+    #print(mymembers)    ###########
     template = loader.get_template('all_members.html')
     context = {
         'mymembers': mymembers,
@@ -157,15 +158,22 @@ def testing(request):
     mymember = Member.objects.values_list('firstname')
     if request.user.is_authenticated:
         a = request.user.email
-    #        print(a)
-    #        print(mymember[0])
-    #       if ('Ghadi',) in mymember:
-    #           print(True)
     template = loader.get_template('template.html')
     context = {
         'mymember': mymember,
     }
     return HttpResponse(template.render(context, request))
+
+
+def panier(request):
+    template = loader.get_template('panier.html')
+    username = request.user.username
+    mymember = Member.objects.get(username = username)
+
+    context = {
+        'mymember': mymember, ##TODO: Changer les parametre
+    }
+    return render(request, 'panier.html', context)
 
 
 def registerPage(request):
