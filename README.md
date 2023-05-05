@@ -43,8 +43,7 @@
 #### Français - L'ensemble du texte nécessaire pour la bonne gestion de notre site web. 
 #### Anglais - Si nous décidons d'offrir une version anglaise de notre application pour les canadiens anglophones. 
 #### Techno - Création d'une page web, Graphique des devises à chaque heure sur plusieurs journée, gestion de banque d'information. 
-# Technologies 
-## Technologie à utiliser : exemple Android git 
+## Technologies 
 ### Git : 
 #### Git est un service d'aide dans la gestion des projets en programmation. Il aide les utilisateurs à effectuer plusieurs tâches comme la division de travail et le partage de codes.
 ### Python : 
@@ -56,10 +55,16 @@
 ### Django :
 #### Un outil qui nous aidera de relier notre code de Python avec celui de Html.
 ## Défis / difficultés : 
-#### - Apprendre python et Html
-#### - Apprendre comment lier nos code de language différents à l'aide de django.
+#### - Mettre notre site en ligne
+#### - Mettre en relation les différents types de langage
+#### - Implémenter adéquatement la librairie Django dans notre programme
+## Perspective
+#### On aurait pu implémenter une version anglaise
+#### Notre application web ne permet pas en compte toutes les actions en bourse et on pourrait remédier à cela
+#### On pourrait permettre de modifié nos graphiques (ex: ajout de ligne de tendance, charts, etc.)
 # Plan de travail en équipe 	
 ## Diagramme de Gantt : Excel, gantt Project 
+![Capture d’écran 2023-05-05 085747](https://user-images.githubusercontent.com/123177411/236479825-95f1eaeb-e78b-4563-abea-5968e0b6a1cd.png)
 ## Analyse : 
 ## UML : diagramme de classes 
 ![image](https://user-images.githubusercontent.com/123177411/229124117-567ff7c8-b53c-493e-ad3d-409e50dafdea.png)
