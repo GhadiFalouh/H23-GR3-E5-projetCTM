@@ -161,9 +161,9 @@
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<div class="container-fluid">
 			  <a class="navbar-brand">CMT</a>
-			  <a class="navbar-brand" href="Accueil.html">Accueil</a>
-			  <a class="navbar-brand" href="panier.html">Panier</a>
-			  <a class="navbar-brand" href="connexion.html">Connexion</a>
+			  <a class="navbar-brand" href={% url 'main' %}>Accueil</a>
+			  <a class="navbar-brand" href={% url 'panier' %}>Panier</a>
+			  <a class="navbar-brand" href={% url 'logout' %}>Déconnexion</a>
  			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
 				<span class="navbar-toggler-icon"></span>
 			  </button>
@@ -213,7 +213,7 @@
 
 				<!-- Création première slide du carousel -->
 			<div class="carousel-item active">
-				<img src="market.jpg" class="d-block w-100" width="200%" height="200%" preserveAspectRatio="xMidYmid slice" focusable="true" alt="Carousel image 1 ">
+				<img src="../static/market.jpg" class="d-block w-100" width="200%" height="200%" preserveAspectRatio="xMidYmid slice" focusable="true" alt="Carousel image 1 ">
 				<div class="container">
 					<div class="carousel-caption text-start">
 					<h1>Canada Market Trade Marker</h1>
@@ -226,7 +226,7 @@
 			</div>
 			<!-- Création deuxième slide du carousel -->
 			  <div class="carousel-item">
-				<img src="monnaie-devise2.jpg"class="d-block w-100" preserveAspectRatio="xMidYmid slice" focusable="true" alt="Carousel image 2 ">
+				<img src="../static/monnaie-devise2.jpg" class="d-block w-100" preserveAspectRatio="xMidYmid slice" focusable="true" alt="Carousel image 2 ">
 				<div class="container">
 				  <div class="carousel-caption">
 					<h1>Devises.</h1>
@@ -237,12 +237,12 @@
 			  </div>
 			  <!-- Création troisième slide du carousel -->
 			  <div class="carousel-item">
-				<img src="achat-vente3.jpg" class="d-block w-100" width="" height="600" preserveAspectRatio="xMidYmid slice"  alt="Carousel image 3 " >
+				<img src="../static/achat-vente3.jpg" class="d-block w-100" width="" height="600" preserveAspectRatio="xMidYmid slice" alt="Carousel image 3 " >
 				<div class="container">
 				  <div class="carousel-caption text-end">
 					<h1>Achat / Vente.</h1>
 					<p>Redirection vers le panier pour la confirmation d'un achat ou d'une vente.</p>
-					<p><a class="btn btn-lg btn-primary" href="panier.html">Panier</a></p>
+					<p><a class="btn btn-lg btn-primary" href={% url 'panier' %}>Panier</a></p>
 				  </div>
 				</div>
 			  </div>
@@ -260,24 +260,24 @@
 		  <div class="container marketing">
 			<div class="row">
 			<div class="col-lg-4">
-				<img src="amazon.jpg" class="bd-placeholder-img rounded-circle" width="160" height="160"  aria-label="Placeholder: 140x140"
-				preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%"
+				<img src="../static/amazon.jpg" class="bd-placeholder-img rounded-circle" width="160" height="160" aria-label="Placeholder: 140x140"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%"
 				fill="#777" dy=".3em">
 				<h2 class="fw-normal"> Amazon.com, Inc. (AMZN) </h2>
 				<p>Entreprise de commerce en ligne</p>
 				<p><a class="btn btn-secondary" href="#">Voir les détails &raquo;</a></p>
 			</div>
 			<div class="col-lg-4">
-				<img src="mcdo.jpg" class="bd-placeholder-img rounded-circle" width="160" height="160"  aria-label="Placeholder: 140x140"
-				preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/><text x="25%" y="25%"
+				<img src="../static/mcdo.jpg" class="bd-placeholder-img rounded-circle" width="160" height="160" aria-label="Placeholder: 140x140"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/><text x="25%" y="25%"
 				fill="#777" dy=".3em">
 				<h2 class="fw-normal"> McDonald's Corp. (MCD) </h2>
 				<p>Chaîne de restauration rapide mondiale</p>
 				<p><a class="btn btn-secondary" href="#">Voir les détails &raquo;</a></p>
 			</div>
 			<div class="col-lg-4">
-				<img src="walt-disney.jpg" class="bd-placeholder-img rounded-circle" width="160" height="160"  aria-label="Placeholder: 140x140"
-				preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100" height="100" fill="#777"/><text x="50%" y="50%"
+				<img src="../static/walt-disney.jpg" class="bd-placeholder-img rounded-circle" width="160" height="160" aria-label="Placeholder: 140x140"
+                     preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100" height="100" fill="#777"/><text x="50%" y="50%"
 				fill="#777" dy=".3em">
 				<h2 class="fw-normal"> Walt Disney Co. (DIS) </h2>
 				<p>Un conglomérat de médias et de divertissement</p>
