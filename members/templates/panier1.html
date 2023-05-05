@@ -102,6 +102,8 @@
     <ul class="list-group mb-3">
       <li class="list-group-item d-flex justify-content-between lh-condensed">
         <div>
+            <form method="POST" action="{% url 'panier' %}">
+      {% csrf_token %}
           <h6 class="my-0">Produit</h6>
           <select name="action" id="action">
         <option value="AAPL">Apple Inc. (AAPL)</option>

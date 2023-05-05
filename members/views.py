@@ -9,6 +9,8 @@ from django.http import HttpResponse
 from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+
+
 # py manage.py runserver
 
 
@@ -19,7 +21,7 @@ def accueil(request):
 @login_required(login_url='login')  # pour interdire l acees sans si tu nes pas connecte
 def members(request):
     mymembers = Member.objects.all().values()
-    #print(mymembers)    ###########
+    # print(mymembers)    ###########
     template = loader.get_template('all_members.html')
     context = {
         'mymembers': mymembers,
@@ -37,8 +39,11 @@ def details(request, id):
     }
     return render(request, 'details.html', context)
 
+
 @login_required(login_url='login')
 def devise(request):
+    mymembers = Member.objects.all().values()
+
     if request.method == 'POST':
         action = request.POST.get('action')
         print('action', action)
@@ -57,12 +62,7 @@ def devise(request):
     else:
         return render(request, 'devise.html')
 
-
-
-
-
-
-    #return render(request, 'devise.html')
+    # return render(request, 'devise.html')
 
 
 ''''
@@ -90,6 +90,40 @@ def recherche(request):
         return render(request, 'devise.html', context)
     else:
         return render(request, 'recherche.html')
+
+
+def panier(request):
+
+    actions_dict = {}
+    mymembers = Member.objects.all().values()
+    mymember = None  # pour initialiser
+    cout = 0
+    for member in mymembers:
+        if member['username'] == request.user.username:
+            mymember = Member.objects.get(id=member['id'])
+            portefeuille = mymember.portefeuille
+            actions_dict = portefeuille.actions
+    if request.method == 'POST':  # si utilisateur veut acheter ou vendre
+        action = request.POST.get('action')
+        typeOperation = request.POST.get('type')
+        if typeOperation == 'Acheter':
+            montantDepense, etat = getPrix(action, mymember.portefeuille.montant, False)
+            solde = mymember.portefeuille.montant - montantDepense
+            cout = montantDepense
+        else:  # si vente
+            montantRecuperer, etat = getPrix(action, mymember.portefeuille.montant, False)
+            solde = mymember.portefeuille.montant + montantRecuperer
+            cout -= montantRecuperer
+        context = {
+            'mymember': mymember, 'solde': solde, 'montant_actuel' : mymember.portefeuille.montant,
+            'valeur' : getValeur(actions_dict) + solde, 'cout' : cout, 'action' :action
+        }
+        return render(request, 'panier.html', context)
+
+    context = {
+        'mymember': mymember
+    }
+    return render(request, 'panier1.html', context)
 
 
 # Seul le membre associé a cette portefeuille a le droit d'accéder à cela
@@ -137,7 +171,7 @@ def getValeur(dict_actions: PorteFeuille.actions) -> int:
 
 
 def getPrix(nomAction, max,
-            graph):  # si graphe on return tous les donnees, si nin on return le prix seulement(pour acheter ou vendre)
+            graph):  # si graphe == True on return tous les donnees, si nin on return le prix seulement(pour acheter ou vendre)
     api_key = 'Z8O8EWVEWLEFPD4X'
     CSV_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=" + nomAction + "&interval=60min&slice=year1month1&apikey=" + api_key
     with requests.Session() as s:
@@ -190,17 +224,6 @@ def testing(request):
         'mymember': mymember,
     }
     return HttpResponse(template.render(context, request))
-
-
-def panier(request):
-    template = loader.get_template('panier.html')
-    username = request.user.username
-    mymember = Member.objects.get(username = username)
-
-    context = {
-        'mymember': mymember, ##TODO: Changer les parametre
-    }
-    return render(request, 'panier.html', context)
 
 
 def registerPage(request):

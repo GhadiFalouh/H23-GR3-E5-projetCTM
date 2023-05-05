@@ -102,24 +102,11 @@
     <ul class="list-group mb-3">
       <li class="list-group-item d-flex justify-content-between lh-condensed">
         <div>
-          <h6 class="my-0">Produit</h6>
-          <select name="action" id="action">
-        <option value="AAPL">Apple Inc. (AAPL)</option>
-        <option value="MSFT">Microsoft Corporation (MSFT)</option>
-        <option value="GOOGL">Alphabet Inc. (GOOGL)</option>
-        <option value="AMZN">Amazon.com, Inc. (AMZN)</option>
-        <option value="Meta">Meta (Meta)</option>
-        <option value="TSLA">Tesla, Inc. (TSLA)</option>
-        <option value="V">Visa Inc. (V)</option>
-        <option value="DIS">Walt Disney Co. (DIS)</option>
-        <option value="KO">Coca-Cola Co. (KO)</option>
-        <option value="WMT">Walmart Inc. (WMT)</option>
-        <option value="MCD">McDonald's Corp. (MCD)</option>
-        <option value="BA">The Boeing Co. (BA)</option>
-        <option value="IBM">IBM Corporation (IBM)</option>
-      </select>
+
+        <label for="Prénom">produit</label>
+          <input type="text" class="form-control" id="Produit" placeholder={{ action }} required disabled>
         </div>
-        <span class="text-muted">$$$$</span>
+        <span class="text-muted">Coût {{ cout }}$</span>
       </li>
     </ul>
   </div>
@@ -152,16 +139,16 @@
       <h4 class="mb-3"></h4>
         <div class="col-md-6 mb-3">
           <label for="cc-name">- Montant Actuel</label>
-          <small class="text-muted">...$</small>
+          <small class="text-muted">{{ montant_actuel}}$</small>
         </div>
         <div class="col-md-6 mb-3">
-          <label for="cc-name">- Montant après l'achat</label>
-          <small class="text-muted">...$</small>
+          <label for="cc-name">- Montant après l'operation</label>
+          <small class="text-muted">{{ solde }}$</small>
         </div>
       <div class="row">
         <div class="col-md-3 mb-3">
-          <label for="cc-expiration">- Taxes incluses </label>
-          <small class="text-muted">...$</small>
+          <label for="cc-expiration">- Valeur actuel de votre compte </label>
+          <small class="text-muted">{{ valeur }}$</small>
         </div>
       </div>
       <a class="btn btn-primary btn-lg btn-block"  href="Accueil.html">Confirmer Paiement</a>
