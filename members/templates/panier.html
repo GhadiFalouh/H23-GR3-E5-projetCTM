@@ -108,9 +108,23 @@
       <li class="list-group-item d-flex justify-content-between lh-condensed">
         <div>
           <h6 class="my-0">Produit</h6>
-          <small class="text-muted">Brief description</small>
+          <select name="action" id="action">
+        <option value="AAPL">Apple Inc. (AAPL)</option>
+        <option value="MSFT">Microsoft Corporation (MSFT)</option>
+        <option value="GOOGL">Alphabet Inc. (GOOGL)</option>
+        <option value="AMZN">Amazon.com, Inc. (AMZN)</option>
+        <option value="Meta">Meta (Meta)</option>
+        <option value="TSLA">Tesla, Inc. (TSLA)</option>
+        <option value="V">Visa Inc. (V)</option>
+        <option value="DIS">Walt Disney Co. (DIS)</option>
+        <option value="KO">Coca-Cola Co. (KO)</option>
+        <option value="WMT">Walmart Inc. (WMT)</option>
+        <option value="MCD">McDonald's Corp. (MCD)</option>
+        <option value="BA">The Boeing Co. (BA)</option>
+        <option value="IBM">IBM Corporation (IBM)</option>
+      </select>
         </div>
-        <span class="text-muted">$</span>
+        <span class="text-muted">$$$$</span>
       </li>
     </ul>
   </div>
@@ -122,11 +136,11 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="Prénom">Prénom</label>
-          <input type="text" class="form-control" id="Prénom" placeholder="Prénom de l'utilisateur" required disabled>
+          <input type="text" class="form-control" id="Prénom" placeholder={{ mymember.firstname }} required disabled>
         </div>
         <div class="col-md-6 mb-3">
           <label for="Nom de famille">Nom de famille</label>
-          <input type="text" class="form-control" id="Nom de famille" placeholder="Nom de l'utilisateur" required disabled>
+          <input type="text" class="form-control" id="Nom de famille" placeholder={{ mymember.lastname }} required disabled>
         </div>
       </div>
       <hr class="mb-4">
