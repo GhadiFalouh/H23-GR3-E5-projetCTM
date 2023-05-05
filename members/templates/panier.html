@@ -21,22 +21,53 @@
 <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <style>
-  #devise{
-				border-radius: 5px;
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+    .nav-scroller {
+			position: relative;
+			z-index: 2;
+			height: 2.75rem;
+			overflow-y: hidden;
 			}
-</style>
+			.nav-scroller.nav {
+				display: flex;
+				flex-wrap: nowrap;
+				padding-bottom: 1rem;
+				margin-top: -1px;
+				overflow-x: auto;
+				text-align: center;
+				white-space: nowrap;
+				-webkit-overflow-scrolling: touch;
+			}
+			.nav-item
+			{
+				margin: 2px;
+			}
+  </style>
   <!-- Custom styles for this template -->
   <link href="form-validation.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-    
+
 	<header>
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<div class="container-fluid">
 			  <a class="navbar-brand">CMT</a>
-			  <a class="navbar-brand" href="Accueil.html">Accueil</a>
-			  <a class="navbar-brand" href="panier.html">Panier</a>
-			  <a class="navbar-brand" href="connexion.html">Connexion</a>
+			   <a class="navbar-brand" href={% url 'main' %}>Accueil</a>
+			  <a class="navbar-brand" href={% url 'panier' %}>Panier</a>
+			  <a class="navbar-brand" href={% url 'logout' %}>Déconnexion</a>
  			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
 				<span class="navbar-toggler-icon"></span>
 			  </button>
@@ -47,26 +78,10 @@
 				  </li>
 				</ul>
 				<form class="d-flex">
-            <label for="devise" class="form-label"></label>
-            <select class=".form-select" id="devise" required>
-              <option value="">Choisir devise</option>
-              <option> Apple Inc. (AAPL)</option>
-              <option> Microsoft Corporation (MSFT)</option>
-              <option> Alphabet Inc. (GOOGL)</option>
-              <option> Meta (Meta)</option>
-              <option> Tesla, Inc. (TSLA)</option>
-              <option> Visa Inc. (V)</option>
-              <option> Walt Disney Co. (DIS)</option>
-              <option> Coca-Cola Co. (KO)</option>
-              <option> Walmart Inc. (WMT)</option>
-              <option> McDonald's Corp. (MCD)</option>
-              <option> The Boeing Co. (BA)</option>
-              <option> IBM Corporation (IBM)</option>
-            </select>
-            <div class="invalid-feedback">
-              Veuillez sélectionner une devise valide.
-            </div>	
+
+				  <input class="form-control me-2" type="text" placeholder="Devise">
 				  <button class="btn btn-primary" type="button">Rechercher</button>
+
 				</form>
 			  </div>
 			</div>
@@ -74,6 +89,10 @@
 		</header>
   <div class="container">
 <div class="py-5 text-center">
+  <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+  </svg>
   <h2>Panier </h2>
   <p class="lead">Vous verrez au bas de cette page toute vos informations personnels ainsi que l'ensemble des devises et leurs montants totals</p>
 </div>
