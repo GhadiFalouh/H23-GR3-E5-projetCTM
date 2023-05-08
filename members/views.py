@@ -74,18 +74,22 @@ def graphique(request, action):
 
 
 def recherche(request):
-    if request.method == 'POST':
-        action = request.POST.get('action')
+    def filtrerInfo(action):
         listeDonnees = getPrix(action, 0, True)
         liste_prix = []
         liste_date = []
+        # La partie suivant sert a filtrer les donnees recus par l'API Alpha Vantage pour récuperer ce qu'on cherche
         for i in range(len(listeDonnees[0][0][0])):
             liste_prix.append(listeDonnees[0][i][1])
             liste_date.append(listeDonnees[0][i][0])
         for i in range(len(liste_prix) // 2):
             liste_prix[i], liste_prix[-1 - i] = liste_prix[-1 - i], liste_prix[i]
             liste_date[i], liste_date[-1 - i] = liste_date[-1 - i], liste_date[i]
+        return liste_prix,liste_date
 
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        liste_prix, liste_date = filtrerInfo(action)
         context = {'action': action, 'liste_prix': liste_prix, 'liste_date': liste_date}
         return render(request, 'devise.html', context)
     else:
@@ -93,16 +97,17 @@ def recherche(request):
 
 
 def panier(request):
-
     actions_dict = {}
     mymembers = Member.objects.all().values()
     mymember = None  # pour initialiser
     cout = 0
+    portefeuille = None
     for member in mymembers:
         if member['username'] == request.user.username:
             mymember = Member.objects.get(id=member['id'])
             portefeuille = mymember.portefeuille
             actions_dict = portefeuille.actions
+
     if request.method == 'POST':  # si utilisateur veut acheter ou vendre
         action = request.POST.get('action')
         typeOperation = request.POST.get('type')
@@ -110,19 +115,30 @@ def panier(request):
             montantDepense, etat = getPrix(action, mymember.portefeuille.montant, False)
             solde = mymember.portefeuille.montant - montantDepense
             cout = montantDepense
+            #
+            if etat:
+                portefeuille.montant -= montantDepense
+                actions_dict[action] += 1
+            #
         else:  # si vente
             montantRecuperer, etat = getPrix(action, mymember.portefeuille.montant, False)
             solde = mymember.portefeuille.montant + montantRecuperer
             cout -= montantRecuperer
+            portefeuille.montant += montantRecuperer
+            actions_dict[action] -= 1
+        portefeuille.save()
+        mymember.portefeuille = portefeuille
+        mymember.save()
         context = {
-            'mymember': mymember, 'solde': solde, 'montant_actuel' : mymember.portefeuille.montant,
-            'valeur' : getValeur(actions_dict) + solde, 'cout' : cout, 'action' :action
+            'mymember': mymember, 'solde': solde, 'montant_actuel': mymember.portefeuille.montant,
+            'valeur': getValeur(actions_dict) + solde, 'cout': cout, 'action': action
         }
-        return render(request, 'panier.html', context)
 
+        return render(request, 'panier.html', context)
     context = {
         'mymember': mymember
     }
+
     return render(request, 'panier1.html', context)
 
 

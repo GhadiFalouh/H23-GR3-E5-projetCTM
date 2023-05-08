@@ -121,8 +121,27 @@
         <option value="IBM">IBM Corporation (IBM)</option>
       </select>
         </div>
-          <input type="submit" name="type" value="Acheter">
-        <input type="submit" name="type" value="Vendre">
+          <style>
+  .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .button:hover {
+    background-color: #45a049;
+  }
+</style>
+        <input type="submit" name="type" value="Acheter" class="button">
+          <input type="submit" name="type" value="Vendre" class="button">
       </li>
     </ul>
   </div>
