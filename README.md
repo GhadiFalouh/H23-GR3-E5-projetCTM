@@ -59,9 +59,10 @@
 #### - Mettre en relation les différents types de langage
 #### - Implémenter adéquatement la librairie Django dans notre programme
 ## Perspective
-#### On aurait pu implémenter une version anglaise
-#### Notre application web ne permet pas en compte toutes les actions en bourse et on pourrait remédier à cela
-#### On pourrait permettre de modifié nos graphiques (ex: ajout de ligne de tendance, charts, etc.)
+#### •	On pourrait implémenter une version anglaise sachant que notre site vise la population canadienne global et donc, inclut les anglophones.
+#### •	Notre application web ne prend pas en compte toute les actions en bourse et on pourrait remédier à cela
+#### •	On pourrait permettre la possibilité de modifié nos graphiques (ex: ajout de ligne de tendance, charts, etc.)
+#### •	Nous aurions pu implémenter les nombreuses informations liées au graphique pour permettre aux utilisateurs d’avoir un meilleur constat de leur achat.  
 # Plan de travail en équipe 	
 ## Diagramme de Gantt : Excel, gantt Project 
 ![Capture d’écran 2023-05-05 085747](https://user-images.githubusercontent.com/123177411/236479825-95f1eaeb-e78b-4563-abea-5968e0b6a1cd.png)
