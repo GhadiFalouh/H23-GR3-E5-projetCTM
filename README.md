@@ -71,3 +71,8 @@
 
 ## Cas d'utilisation principal :
 ![Capture](https://github.com/GhadiFalouh/H23-GR3-E5-projetCTM/assets/123177083/ce6d5422-a55c-4e50-b07a-6bbb0b4ef5f9)
+
+## Diagramme d'état : Navigation du site Web 
+![image](https://github.com/GhadiFalouh/H23-GR3-E5-projetCTM/assets/123177083/53c4a664-2898-478e-b3f1-32f5ff579b6b)
+
+
