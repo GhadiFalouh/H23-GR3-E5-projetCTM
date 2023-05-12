@@ -67,6 +67,7 @@
 ![Capture d’écran 2023-05-05 085747](https://user-images.githubusercontent.com/123177411/236479825-95f1eaeb-e78b-4563-abea-5968e0b6a1cd.png)
 ## Analyse : 
 ## UML : diagramme de classes 
-![image](https://user-images.githubusercontent.com/123177411/229124117-567ff7c8-b53c-493e-ad3d-409e50dafdea.png)
+![image](https://github.com/GhadiFalouh/H23-GR3-E5-projetCTM/assets/98779442/e6202d2f-f501-49b8-b679-451da1deab25)
+
 ## Cas d'utilisation principal :
 ![Capture](https://github.com/GhadiFalouh/H23-GR3-E5-projetCTM/assets/123177083/ce6d5422-a55c-4e50-b07a-6bbb0b4ef5f9)
