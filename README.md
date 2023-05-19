@@ -69,6 +69,12 @@
 ### Django :
 #### Un outil qui nous aidera de relier notre code de Python avec celui de Html.
 ## Défis / difficultés : 
+### Inititalement : 
+#### Apprendre python et Html.
+#### Apprendre à modifier du code Boostrape pour le rendre compatible avec ce qu’on cherche.
+#### Apprendre comment travailler avec Django.
+#### Apprendre à travailler avec des bases de données.
+### Par la suite : 
 #### - Mettre notre site en ligne
 #### - Mettre en relation les différents types de langage
 #### - Implémenter adéquatement la librairie Django dans notre programme
