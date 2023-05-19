@@ -3,7 +3,10 @@ from django.urls import path
 from . import views
 
 from django.contrib.auth.views import LoginView, LogoutView
-
+"""
+On trouve ici tous les url patterns qui determine chaque pattern fait quoi dans le projet
+Cette partie joue une role important dans l<organisation du projet 
+"""
 urlpatterns = [
     path('main/', views.main, name='main'),
     path('members/', views.members, name='members'),
