@@ -51,9 +51,10 @@
 ### AWS (Amazon Web services) :
 #### AWS est un service offert par Amazon qui permet aux utilisateurs de mettre leur base de données en lignes dans le but de pouvoir y accéder à partir de n’importe quel ordinateur connecté au réseau. 
 ### Python : 
-#### Un langage de programmation qui nous permettera de programmer la logique de notre site web grâce aux nombreuses librairies que ce langage offre â ces utlisateurs comme par exemple : 
-##### Matplotlib qui permet de créer des graphiques interactifs qu'on aura besoin pour representer le portefeuille personel de chaque utlisateurs.
-##### On utilise le logiciel Pycharm pour complier notre code
+#### • Un langage de programmation qui nous permettra de programmer la logique de notre site web grâce aux nombreuses librairies que ce langage offre â ces utilisateurs.
+#### • Pour programmer en python on utilisera l’environnement de développement Pycharm qui est développé par l’entreprise JetBrains qui a aussi développer l’environnement Inteliji Idea. 
+#### • On a choisi cet environnement, car il est compatible avec Django. En fait, Django est un framework en python qui permet de programmer des sites web facilement en respectant le principe de MVC (modelé vue contrôleur). Django va nous permettre de créer un application web qui met en relation du code html et css avec python.
+
 ### Html :
 #### Un langage conçu pour la présentation de notre site web. Grâce à lui, on peut créer la structure des pages Web. HTML donne aux auteurs les moyens de :
 #### •	Publiez des documents en ligne avec des titres, du texte, des tableaux, des listes, des photos, etc.
