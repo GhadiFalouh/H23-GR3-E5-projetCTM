@@ -75,5 +75,5 @@
 
 ## Diagramme d'état : Navigation du site Web 
 ![image](https://github.com/GhadiFalouh/H23-GR3-E5-projetCTM/assets/123177083/53c4a664-2898-478e-b3f1-32f5ff579b6b)
-##Conclusion : En somme, l’application web CTM est un outil qui peut être utilisé par des débutant dans le monde d’investissement boursière pour les aider à mieux le comprendre afin d’éviter de perdre leurs argents facilement. Alors, il est très important de rester prudent et de ne pas investir son argent dans des domaines qu’on connait pas bien.  
+## Conclusion : En somme, l’application web CTM est un outil qui peut être utilisé par des débutant dans le monde d’investissement boursière pour les aider à mieux le comprendre afin d’éviter de perdre leurs argents facilement. Alors, il est très important de rester prudent et de ne pas investir son argent dans des domaines qu’on connait pas bien.  
 
