@@ -51,7 +51,16 @@
 ##### Matplotlib qui permet de créer des graphiques interactifs qu'on aura besoin pour representer le portefeuille personel de chaque utlisateurs.
 ##### On utilise le logiciel Pycharm pour complier notre code
 ### Html :
-#### Un language concu pour la présentation de notre site web. Grâce à lui, on peut créer l'interface graphique de notre site.
+#### Un langage conçu pour la présentation de notre site web. Grâce à lui, on peut créer la structure des pages Web. HTML donne aux auteurs les moyens de :
+#### •	Publiez des documents en ligne avec des titres, du texte, des tableaux, des listes, des photos, etc.
+#### •	Retrouvez des informations en ligne via des liens hypertextes, en un clic.
+#### •	Concevoir des formulaires pour effectuer des transactions avec des services à distance, à utiliser pour rechercher des informations, effectuer des réservations, commander des produits, etc.
+#### •	Incluez des feuilles de calcul, des clips vidéo, des clips audio et d'autres applications directement dans leurs documents.
+### CSS :
+####  Le langage utilisé pour décrire la présentation des pages Web,
+#### •	Comprend les couleurs, la mise en page et les polices. 
+#### •	Il permet d'adapter la présentation à différents types d'appareils, tels que les grands écrans, les petits écrans ou les imprimantes. 
+#### •	La séparation du HTML du CSS aussi nommée la séparation de la structure de la présentation, facilite la maintenance des sites et l'adaptation des pages à différents environnements.
 ### Django :
 #### Un outil qui nous aidera de relier notre code de Python avec celui de Html.
 ## Défis / difficultés : 
