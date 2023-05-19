@@ -2,6 +2,9 @@ from django.db import models
 import random
 
 
+"""
+Classe porteFeuille possède une dictionnaire actions et un montant qui est de 10 000 $ lors de l'intialisation
+"""
 class PorteFeuille(models.Model):
     #member = models.ForeignKey(Member, on_delete=models.CASCADE, null=True, blank=True)
     actions = models.JSONField(default=dict, null= True)
@@ -9,7 +12,9 @@ class PorteFeuille(models.Model):
 
 
 
-
+"""
+Classe Member possède un nom, un id, un username et une porte feuille
+"""
 class Member(models.Model):
     firstname = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
@@ -19,6 +24,10 @@ class Member(models.Model):
     username = models.CharField(max_length=255, unique=True, null=True)
     portefeuille = models.ForeignKey(PorteFeuille, on_delete=models.CASCADE, null=True, blank=True)
 
+
+    """
+    Methode save aide a generer un id aléatoire pour chaque nouveau utilisateur
+    """
     def save(self, *args, **kwargs):
         if not self.id:
             random_number = random.randint(100000, 999999)
@@ -31,6 +40,9 @@ class Member(models.Model):
         return f"{self.firstname} {self.lastname}"
 
 
+"""
+Classe Action n'est pas utilise dans la version actuel de l'application
+"""
 class Action(models.Model):
     name = models.CharField(max_length=255)
     price = models.FloatField(null=True)
