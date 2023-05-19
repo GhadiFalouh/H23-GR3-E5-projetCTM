@@ -45,7 +45,11 @@
 #### Techno - Création d'une page web, Graphique des devises à chaque heure sur plusieurs journée, gestion de banque d'information. 
 ## Technologies 
 ### Git : 
-#### Git est un service d'aide dans la gestion des projets en programmation. Il aide les utilisateurs à effectuer plusieurs tâches comme la division de travail et le partage de codes.
+#### Git est un service d'aide dans la gestion des projets en programmation. Il aide les utilisateurs à effectuer plusieurs tâches comme:
+#### •	 La division de travail et le partage de codes.
+#### •	Retracer les erreurs qui se produit durant le développement du projet
+### AWS (Amazon Web services) :
+#### AWS est un service offert par Amazon qui permet aux utilisateurs de mettre leur base de données en lignes dans le but de pouvoir y accéder à partir de n’importe quel ordinateur connecté au réseau. 
 ### Python : 
 #### Un langage de programmation qui nous permettera de programmer la logique de notre site web grâce aux nombreuses librairies que ce langage offre â ces utlisateurs comme par exemple : 
 ##### Matplotlib qui permet de créer des graphiques interactifs qu'on aura besoin pour representer le portefeuille personel de chaque utlisateurs.
