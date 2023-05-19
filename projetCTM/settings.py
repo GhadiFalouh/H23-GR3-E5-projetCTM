@@ -74,6 +74,10 @@ WSGI_APPLICATION = "projetCTM.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+#Si vous voulez essayer l'application au cegep il faut utiliser la base de donner locale de votre ordinateur voir option #2
+# il est important de creer un superUser(Admin) avant de utiliser l<option 2
+
+#1
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -84,18 +88,20 @@ DATABASES = {
         'PORT': '5432'
     }
 }
-'''
 
+#2 (base de donnee locale)
+'''
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
-
-
 '''
+
+
+
+
 '''
 
 import mongoengine
