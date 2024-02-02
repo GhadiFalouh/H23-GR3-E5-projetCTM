@@ -38,46 +38,6 @@
 #### -	Les investisseurs débutants ou spécialistes canadiens qui souhaitent investir dans le commerce en ligne
 #### -	Les investisseurs spécialistes qui souhaitent ce renseigner sur une action avant d’investir dessus dans un vrai marché d’action financière.
 #### -	Les compagnies qui veulent comparer la valeur de leur produit à l’égard des autres compagnies compétiteurs dans le même domaine. 
-## Lien avec les autres matières 
-#### Math - Gestion de son porte monnaie / tendance des devises à baissées ou augmentées. 
-#### Français - L'ensemble du texte nécessaire pour la bonne gestion de notre site web. 
-#### Anglais - Si nous décidons d'offrir une version anglaise de notre application pour les canadiens anglophones. 
-#### Techno - Création d'une page web, Graphique des devises à chaque heure sur plusieurs journée, gestion de banque d'information. 
-## Technologies 
-### Git : 
-#### Git est un service d'aide dans la gestion des projets en programmation. Il aide les utilisateurs à effectuer plusieurs tâches comme:
-#### •	 La division de travail et le partage de codes.
-#### •	Retracer les erreurs qui se produit durant le développement du projet
-### AWS (Amazon Web services) :
-#### AWS est un service offert par Amazon qui permet aux utilisateurs de mettre leur base de données en lignes dans le but de pouvoir y accéder à partir de n’importe quel ordinateur connecté au réseau. 
-### Python : 
-#### • Un langage de programmation qui nous permettra de programmer la logique de notre site web grâce aux nombreuses librairies que ce langage offre â ces utilisateurs.
-#### • Pour programmer en python on utilisera l’environnement de développement Pycharm qui est développé par l’entreprise JetBrains qui a aussi développer l’environnement Inteliji Idea. 
-#### • On a choisi cet environnement, car il est compatible avec Django. En fait, Django est un framework en python qui permet de programmer des sites web facilement en respectant le principe de MVC (modelé vue contrôleur). Django va nous permettre de créer un application web qui met en relation du code html et css avec python.
-
-### Html :
-#### Un langage conçu pour la présentation de notre site web. Grâce à lui, on peut créer la structure des pages Web. HTML donne aux auteurs les moyens de :
-#### •	Publiez des documents en ligne avec des titres, du texte, des tableaux, des listes, des photos, etc.
-#### •	Retrouvez des informations en ligne via des liens hypertextes, en un clic.
-#### •	Concevoir des formulaires pour effectuer des transactions avec des services à distance, à utiliser pour rechercher des informations, effectuer des réservations, commander des produits, etc.
-#### •	Incluez des feuilles de calcul, des clips vidéo, des clips audio et d'autres applications directement dans leurs documents.
-### CSS :
-####  Le langage utilisé pour décrire la présentation des pages Web,
-#### •	Comprend les couleurs, la mise en page et les polices. 
-#### •	Il permet d'adapter la présentation à différents types d'appareils, tels que les grands écrans, les petits écrans ou les imprimantes. 
-#### •	La séparation du HTML du CSS aussi nommée la séparation de la structure de la présentation, facilite la maintenance des sites et l'adaptation des pages à différents environnements.
-### Django :
-#### Un outil qui nous aidera de relier notre code de Python avec celui de Html.
-## Défis / difficultés : 
-### Inititalement : 
-#### Apprendre python et Html.
-#### Apprendre à modifier du code Boostrape pour le rendre compatible avec ce qu’on cherche.
-#### Apprendre comment travailler avec Django.
-#### Apprendre à travailler avec des bases de données.
-### Par la suite : 
-#### - Mettre notre site en ligne
-#### - Mettre en relation les différents types de langage
-#### - Implémenter adéquatement la librairie Django dans notre programme
 ## Perspective
 #### •	On pourrait implémenter une version anglaise sachant que notre site vise la population canadienne global et donc, inclut les anglophones.
 #### •	Notre application web ne prend pas en compte toute les actions en bourse et on pourrait remédier à cela
